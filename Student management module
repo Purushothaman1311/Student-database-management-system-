@@ -1,0 +1,42 @@
+# student_manager.py
+from db_connector import DBConnector
+
+class StudentManager:
+    def __init__(self):
+        self.db = DBConnector()
+    
+    def add_student(self, student_data):
+        query = """
+        INSERT INTO students 
+        (first_name, last_name, date_of_birth, email, phone, address)
+        VALUES (%s, %s, %s, %s, %s, %s)
+        """
+        conn = self.db.connect()
+        if conn:
+            try:
+                cursor = conn.cursor()
+                cursor.execute(query, student_data)
+                conn.commit()
+                return cursor.lastrowid
+            except Error as e:
+                print(f"Error adding student: {e}")
+                return None
+            finally:
+                self.db.disconnect()
+    
+    def get_all_students(self):
+        query = "SELECT * FROM students"
+        conn = self.db.connect()
+        if conn:
+            try:
+                cursor = conn.cursor(dictionary=True)
+                cursor.execute(query)
+                return cursor.fetchall()
+            except Error as e:
+                print(f"Error fetching students: {e}")
+                return []
+            finally:
+                self.db.disconnect()
+        return []
+    
+    # Implement update_student, delete_student, search_student methods
