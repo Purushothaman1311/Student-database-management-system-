@@ -1,0 +1,36 @@
+# main.py
+from student_manager import StudentManager
+from course_manager import CourseManager
+
+def display_menu():
+    print("\nStudent Database Management System")
+    print("1. Add New Student")
+    print("2. View All Students")
+    print("3. Add New Course")
+    print("4. Enroll Student in Course")
+    print("5. Generate Reports")
+    print("6. Exit")
+
+def main():
+    student_manager = StudentManager()
+    course_manager = CourseManager()
+    
+    while True:
+        display_menu()
+        choice = input("Enter your choice: ")
+        
+        if choice == '1':
+            # Add student logic
+            pass
+        elif choice == '2':
+            students = student_manager.get_all_students()
+            for student in students:
+                print(student)
+        elif choice == '6':
+            print("Exiting system...")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
