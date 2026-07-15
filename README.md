@@ -51,7 +51,7 @@ A simple Student Database Management System (SDMS) built using Python and MySQL.
 ### 3. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/student-dbms-python.git
+git clone https://github.com/purushothaman1311/Student-database-management-system.git
 cd student-dbms-python
 ```
 
